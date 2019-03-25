@@ -33,7 +33,7 @@ public class NioTest4 {
             buffer.flip();
             outputChannel.write(buffer);
         }
-        fileInputStream.close();
-        fileOutputStream.close();
+        inputChannel.close();
+        outputChannel.close();
     }
 }
