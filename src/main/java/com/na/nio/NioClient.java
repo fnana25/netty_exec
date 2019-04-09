@@ -51,14 +51,18 @@ public class NioClient {
                             ExecutorService executorService = Executors.newSingleThreadExecutor(Executors.defaultThreadFactory());
                             executorService.submit(() -> {
                                 while (true) {
-                                    writeBuffer.clear();
-                                    InputStreamReader input = new InputStreamReader(System.in);
-                                    BufferedReader bufferedReader = new BufferedReader(input);
+                                    try{
+                                        writeBuffer.clear();
+                                        InputStreamReader input = new InputStreamReader(System.in);
+                                        BufferedReader bufferedReader = new BufferedReader(input);
 
-                                    String message = bufferedReader.readLine();
-                                    writeBuffer.put(message.getBytes());
-                                    writeBuffer.flip();
-                                    client.write(writeBuffer);
+                                        String message = bufferedReader.readLine();
+                                        writeBuffer.put(message.getBytes());
+                                        writeBuffer.flip();
+                                        client.write(writeBuffer);
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
                                 }
                             });
                         }

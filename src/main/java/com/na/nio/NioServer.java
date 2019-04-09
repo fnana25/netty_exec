@@ -28,8 +28,7 @@ public class NioServer {
 
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         serverSocketChannel.configureBlocking(false);
-        ServerSocket serverSocket = serverSocketChannel.socket();
-        serverSocket.bind(new InetSocketAddress(8090));
+        serverSocketChannel.socket().bind(new InetSocketAddress(8090));
 
         Selector selector = Selector.open();
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
