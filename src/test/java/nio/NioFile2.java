@@ -1,28 +1,27 @@
-package com.na.nio;
+package nio;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 /**
- * nio写文件
+ * Demo class
  *
  * @author fengna
- * @date 2019/3/25
+ * @date 2019/4/9
  */
-public class NioTest3 {
-
+public class NioFile2 {
     public static void main(String[] args) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("NioTest3.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("NioTest2.txt");
         FileChannel fileChannel = fileOutputStream.getChannel();
-
         ByteBuffer buffer = ByteBuffer.allocate(512);
 
-        byte[] message = "hello world welcome 你好！".getBytes();
+        byte[] message = "hello nana".getBytes();
 
-        for (byte b : message) {
-            buffer.put(b);
+        for (int i = 0; i < message.length; i++) {
+            buffer.put(message[i]);
         }
 
         buffer.flip();
